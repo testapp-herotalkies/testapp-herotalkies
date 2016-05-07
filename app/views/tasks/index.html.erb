@@ -1,0 +1,20 @@
+<span id="slide_value"></span>
+
+<ul id="drags" data-update-url="<%= sort_tasks_url%>">
+  <%@drags.each do |item| %>
+      <%= content_tag_for :li, item do %>
+          <span class="handle">[Drag] <div class="slider"></div> <%= item.name%></span>
+      <% end %>
+  <% end %>
+</ul>
+
+<script>
+    $(function() {
+        $('.slider').slider(
+                {
+                    slide: function(event, ui) {
+                        $("#slide_value").html("Current value: "+ui.value);
+                    }
+                });
+    });
+</script>
